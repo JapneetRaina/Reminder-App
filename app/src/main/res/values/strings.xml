@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">RemindMe</string>
+    <string name="delete">delete</string>
+    <string name="add_items">Add Items</string>
+    <string name="clean_car">Clean Car</string>
+    <string name="add">Add</string>
+    <string name="cancel">Cancel</string>
+    <string name="_1">1</string>
+    <string name="example">example</string>
+    <string name="add_timer">Add Timer</string>
+    <string name="_08_45_pm">08 : 45 pm</string>
+    <string name="time">time</string>
+    <string name="set">Set</string>
+    <string name="set_time">Set Time</string>
+    <string name="pick_time">Pick Time</string>
+    <string name="press_here_to_set_time">Press here to set time</string>
+</resources>
