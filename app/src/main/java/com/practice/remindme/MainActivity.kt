@@ -11,6 +11,7 @@ import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity(), ToDoAdapter.IToDoAdapter {
     lateinit var viewModel: NoteViewModel
     private lateinit var binding: ActivityMainBinding
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -64,6 +66,7 @@ class MainActivity : AppCompatActivity(), ToDoAdapter.IToDoAdapter {
         Toast.makeText(this, "${notesData.text} Deleted", Toast.LENGTH_SHORT).show()
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     @SuppressLint("ClickableViewAccessibility", "SetTextI18n")
     fun setupClick() {
         addButton.setOnClickListener {
@@ -111,7 +114,7 @@ class MainActivity : AppCompatActivity(), ToDoAdapter.IToDoAdapter {
             dialogView.add_button.setOnClickListener {
                 val todoTitle = dialogView.todoEdit.text.toString()
                 val todoTime = dialogView.timePicker.text.toString()
-                    viewModel.insertNode(NotesData(todoTitle, todoTime))
+                viewModel.insertNode(NotesData(todoTitle, todoTime))
                 setTimer()
                 alertdialog.dismiss()
             }
@@ -123,13 +126,13 @@ class MainActivity : AppCompatActivity(), ToDoAdapter.IToDoAdapter {
         }
     }
 
-    @SuppressLint("UnspecifiedImmutableFlag")
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun setTimer() {
         alarmManager = getSystemService(ALARM_SERVICE) as AlarmManager
 
         val intent = Intent(this, NotificationReciver::class.java)
 
-        pendingIntent = PendingIntent.getBroadcast(this, 0, intent, 0)
+        pendingIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
         alarmManager.setRepeating(
             AlarmManager.RTC_WAKEUP, calender.timeInMillis,

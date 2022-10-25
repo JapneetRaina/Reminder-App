@@ -27,8 +27,8 @@ class ToDoAdapter(private val context: Context, private val listener: IToDoAdapt
                 .inflate(R.layout.itemlist_todoactivity, parent, false))
         viewHolder.deleteBtn.setOnClickListener {
             listener.onItemClicked(todos[viewHolder.adapterPosition] )
-
         }
+
         return viewHolder
 
 
